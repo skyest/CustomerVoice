@@ -11,7 +11,9 @@ import SwiftUI
 struct CustomerVoiceApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(Products())
+            ContentView()
+                .environmentObject(Products())
+                .environmentObject(UserInfo())
         }
     }
 }

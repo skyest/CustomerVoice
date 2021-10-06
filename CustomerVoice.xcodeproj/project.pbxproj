@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		440A571D26FE00C300F9C4A0 /* AddNewReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440A571C26FE00C300F9C4A0 /* AddNewReview.swift */; };
 		446679D926FC9DC6007599EE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 446679D826FC9DC6007599EE /* CloudKit.framework */; };
+		4475BED3270ABF5900D78D36 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4475BED2270ABF5900D78D36 /* UserInfo.swift */; };
+		4475BED5270ACA8A00D78D36 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4475BED4270ACA8900D78D36 /* LoginView.swift */; };
 		4499C3C726FAE3FA009FB3E1 /* CustomerVoiceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4499C3C626FAE3FA009FB3E1 /* CustomerVoiceApp.swift */; };
 		4499C3C926FAE3FA009FB3E1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4499C3C826FAE3FA009FB3E1 /* ContentView.swift */; };
 		4499C3CB26FAE3FC009FB3E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4499C3CA26FAE3FC009FB3E1 /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 		440A571C26FE00C300F9C4A0 /* AddNewReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewReview.swift; sourceTree = "<group>"; };
 		446679D626FC9DB5007599EE /* CustomerVoice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CustomerVoice.entitlements; sourceTree = "<group>"; };
 		446679D826FC9DC6007599EE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		4475BED2270ABF5900D78D36 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		4475BED4270ACA8900D78D36 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4499C3C326FAE3FA009FB3E1 /* CustomerVoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomerVoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4499C3C626FAE3FA009FB3E1 /* CustomerVoiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerVoiceApp.swift; sourceTree = "<group>"; };
 		4499C3C826FAE3FA009FB3E1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,7 +125,6 @@
 			children = (
 				446679D626FC9DB5007599EE /* CustomerVoice.entitlements */,
 				4499C3C626FAE3FA009FB3E1 /* CustomerVoiceApp.swift */,
-				4499C3C826FAE3FA009FB3E1 /* ContentView.swift */,
 				4499C43926FB3AD8009FB3E1 /* View */,
 				4499C43A26FB3AEC009FB3E1 /* Model */,
 				4499C3CA26FAE3FC009FB3E1 /* Assets.xcassets */,
@@ -158,10 +161,12 @@
 		4499C43926FB3AD8009FB3E1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4499C3C826FAE3FA009FB3E1 /* ContentView.swift */,
 				4499C3F226FAED83009FB3E1 /* ProductDetail.swift */,
 				440A571C26FE00C300F9C4A0 /* AddNewReview.swift */,
 				4499C3F626FAFE16009FB3E1 /* UserReviewCell.swift */,
 				4499C3FC26FB1ACC009FB3E1 /* UserReviewDetailView.swift */,
+				4475BED4270ACA8900D78D36 /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 			children = (
 				4499C3F026FAE698009FB3E1 /* Product.swift */,
 				4499C3F826FB0CF9009FB3E1 /* UserReview.swift */,
+				4475BED2270ABF5900D78D36 /* UserInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -312,6 +318,8 @@
 				4499C3F326FAED83009FB3E1 /* ProductDetail.swift in Sources */,
 				4499C3F726FAFE16009FB3E1 /* UserReviewCell.swift in Sources */,
 				4499C3F926FB0CF9009FB3E1 /* UserReview.swift in Sources */,
+				4475BED3270ABF5900D78D36 /* UserInfo.swift in Sources */,
+				4475BED5270ACA8A00D78D36 /* LoginView.swift in Sources */,
 				4499C3F126FAE698009FB3E1 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
