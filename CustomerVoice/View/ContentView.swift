@@ -33,7 +33,11 @@ struct ContentView: View {
             .navigationTitle("모든 상품")
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarLeading) {
-                    Button(action: {showLoginSheet.toggle()}) {
+                    Button(action: {
+                        if currentUserInfo.userID == nil {
+                            showLoginSheet.toggle()
+                        }
+                    }) {
                         if currentUserInfo.userID == nil {
                             HStack{
                                 Image(systemName: "person.crop.circle.badge.questionmark")

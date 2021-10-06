@@ -13,7 +13,9 @@ struct ProductDetail: View {
     @State private var selectedTabIndex: Int = 0
     @State private var userReviews: [UserReview] = []
     @State private var addNewCommentSheetVisible: Bool = false
-    
+    @State private var showLoginRequestAlert: Bool = false
+    @EnvironmentObject var currentUserInfo: UserInfo
+
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             ScrollView() {
@@ -68,7 +70,11 @@ struct ProductDetail: View {
                 }
             }
             Button(action: {
-                addNewCommentSheetVisible.toggle()
+                if currentUserInfo.userID == nil {
+                    showLoginRequestAlert.toggle()
+                } else {
+                    addNewCommentSheetVisible.toggle()
+                }
             }, label: {
                 Image(systemName: "plus")
                     .font(.system(.largeTitle))
@@ -81,6 +87,9 @@ struct ProductDetail: View {
                 .padding(.all, 30)
                 .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3,
                         y: 3)
+                .alert(isPresented: $showLoginRequestAlert) {
+                    Alert(title: Text("Login Required"), message: Text("리뷰 작성을 위해서는 로그인이 필요합니다."), dismissButton: .default(Text("확인")))
+                }
             
         }
         .onAppear {

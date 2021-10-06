@@ -8,23 +8,19 @@
 import SwiftUI
 
 struct AddNewReview: View {
-    @State private var userID: String = ""
-    @State private var userPW: String = ""
+    //@State private var userID: String = ""
+    //@State private var userPW: String = ""
     @State private var reviewTitle: String = ""
     @State private var reviewContext: String = ""
     @State private var rate: Double = 5
     @Binding var isPresented: Bool
     @Binding var userReviews: [UserReview]
     var productModelNo: String
+    @EnvironmentObject var currentUserInfo: UserInfo
     
     var body: some View {
         NavigationView {
             Form{
-                Section(header: Text("사용자 정보")){
-                    TextField("User ID", text: $userID)
-                    SecureField("Passsword", text: $userPW)
-                }
-                
                 Section(header: Text("사용자 평가")){
                     HStack{
                         HStack {
@@ -66,7 +62,7 @@ struct AddNewReview: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         let newItem = 
-                        UserReview(recordID: nil, reviewTitle: reviewTitle, reviewContext: reviewContext, userRate: rate, userID: userID, productModelNo: productModelNo)
+                        UserReview(recordID: nil, reviewTitle: reviewTitle, reviewContext: reviewContext, userRate: rate, userID: currentUserInfo.userID!, productModelNo: productModelNo)
                             UserReview.save(item: newItem) { (result) in
                                 switch result {
                                 case .success(_):
