@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UserReviewDetailView: View {
     var userReview: UserReview
+    @EnvironmentObject var currentUserInfo: UserInfo
     @Binding var userReviews: [UserReview]
     @Environment(\.presentationMode) var presentationMode
 
@@ -33,52 +34,53 @@ struct UserReviewDetailView: View {
                 
                 Spacer()
             }
-            HStack {
-                Button(action: {
-                    guard let recordID = userReview.recordID else { return }
-                    UserReview.delete(recordID: recordID) { (result) in
-                        switch result {
-                        case .success(let recordID):
-                            self.userReviews.removeAll { (userReview) -> Bool in
-                                return userReview.recordID == recordID
+            // show buttons only when user info matches
+            if userReview.userID == currentUserInfo.userID {
+                HStack {
+                    Button(action: {
+                        guard let recordID = userReview.recordID else { return }
+                        UserReview.delete(recordID: recordID) { (result) in
+                            switch result {
+                            case .success(let recordID):
+                                self.userReviews.removeAll { (userReview) -> Bool in
+                                    return userReview.recordID == recordID
+                                }
+                                print("Successfully deleted item")
+                            case .failure(let err):
+                                print(err.localizedDescription)
                             }
-                            print("Successfully deleted item")
-                        case .failure(let err):
-                            print(err.localizedDescription)
                         }
-                    }
-                    self.presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Image(systemName: "trash")
-                        .font(.system(.largeTitle))
-                        .frame(width: 65, height: 60)
-                        .foregroundColor(Color.white)
-                        .padding(.bottom, 7)
-                })
-                    .background(Color.red.opacity(0.7))
-                    .cornerRadius(38.5)
-                    .padding(.all, 30)
-                    .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3,
-                            y: 3)
-                
-                Spacer()
-                Button(action: {
-                    // TODO: 리뷰 편집 기능 구현 필요(회원관리 기능 이후 구현 예정)
-                }, label: {
-                    Image(systemName: "square.and.pencil")
-                        .font(.system(.largeTitle))
-                        .frame(width: 65, height: 60)
-                        .foregroundColor(Color.white)
-                        .padding(.bottom, 7)
-                })
-                    .background(Color.blue.opacity(0.7))
-                    .cornerRadius(38.5)
-                    .padding(.all, 30)
-                    .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3,
-                            y: 3)
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "trash")
+                            .font(.system(.largeTitle))
+                            .frame(width: 65, height: 60)
+                            .foregroundColor(Color.white)
+                            .padding(.bottom, 7)
+                    })
+                        .background(Color.red.opacity(0.7))
+                        .cornerRadius(38.5)
+                        .padding(.all, 30)
+                        .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3,
+                                y: 3)                    
+                    Spacer()
+                    Button(action: {
+                        // TODO: 리뷰 편집 기능 구현 필요(회원관리 기능 이후 구현 예정)
+                    }, label: {
+                        Image(systemName: "square.and.pencil")
+                            .font(.system(.largeTitle))
+                            .frame(width: 65, height: 60)
+                            .foregroundColor(Color.white)
+                            .padding(.bottom, 7)
+                    })
+                        .background(Color.blue.opacity(0.7))
+                        .cornerRadius(38.5)
+                        .padding(.all, 30)
+                        .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3,
+                                y: 3)
 
+                }
             }
-            
         }
     }
 }
